@@ -39,6 +39,7 @@ class FilterRow extends Component {
                     // imgSrc={editIcon}
                     imgSrc=""
                     altText="Edit Filters"
+                    tag="Edit Filters"
                     key="Edit Filters"
                     btnClass="FilterBtn"
                     OnClick={this.editFilter}

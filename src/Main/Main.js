@@ -12,7 +12,8 @@ class Main extends Component {
             activeTab: this.props.tabs[0],
             activeFilter: this.props.closetTags[0],
             currTags: this.props.closetTags,
-            currItems: this.props,
+            allItems: this.props.closetItems,
+            currItems: this.props.closetItems["All"],
         };
         this.handleTabSwitch = this.handleTabSwitch.bind(this);
         this.handleFilterSwitch = this.handleFilterSwitch.bind(this);
@@ -40,6 +41,7 @@ class Main extends Component {
     handleFilterSwitch(filter) {
         this.setState({
             activeFilter: filter,
+            currItems: this.props.allItems[filter]
         });
     }
 
@@ -53,10 +55,12 @@ class Main extends Component {
                 />
                 <FilterRow
                     tagList={this.state.currTags}
-                    activeFilter={this.state.currFilter}
+                    activeFilter={this.state.activeFilter}
                     handleFilterSwitch={this.handleFilterSwitch}
                 />
-                <TileWrapper />
+                <TileWrapper 
+                    currItems={this.state.currItems}
+                />
             </div>
         );
     }

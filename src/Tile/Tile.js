@@ -14,7 +14,7 @@ class Tile extends Component {
     handleDrag(evt){
         console.log(`${evt.target} was dragged!`);
     }
-    
+
     render() {
         return (
             <div className="Tile">
