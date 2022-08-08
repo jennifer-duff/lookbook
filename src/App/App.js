@@ -1,8 +1,5 @@
 import React, { Component } from "react";
-import "./App.css";
-import Header from "../Header/Header.js";
-import FilterRow from "../FilterRow/FilterRow";
-import TileWrapper from "../TileWrapper/TileWrapper";
+import Main from "../Main/Main"
 import {ClosetItem, LookItem} from "../Item";
 
 class App extends Component {
@@ -18,7 +15,6 @@ class App extends Component {
             "Accessories",
             "Edit Filters",
         ], 
-        closetFilterImgs: [],
         lookbookTags: [
             "All",
             "Work",
@@ -27,26 +23,16 @@ class App extends Component {
             "Special Occasion",
             "Edit Filters",
         ],
-        lookbookFilterImgs: [],
     };
 
     constructor(props) {
         super(props);
         this.state = {
             closetTags: this.props.closetTags,
-            closetFilterImgs: this.props.closetFilterImgs,
             closetItems: this.initializeClosetItems(),
             lookbookTags: this.props.lookbookTags,
-            lookbookFilterImgs: this.props.lookbookFilterImgs,
             lookbookItems: this.initializeLookbookItems(),
-
-            activeTab: "Closet",
-            tags: this.props.closetTags,
-            currFilter: "All",
-            filterImgs: [],
         };
-        this.handleTabSwitch = this.handleTabSwitch.bind(this);
-        this.handleFilterSwitch = this.handleFilterSwitch.bind(this);
     }
 
     initializeClosetItems(){
@@ -81,46 +67,17 @@ class App extends Component {
         return currLookbookItems;
     }
 
-    handleTabSwitch(tab) {
-        let tags, currFilter, filterImgs;
-        if (tab === "Closet") {
-            tags = this.state.closetTags;
-            currFilter = this.state.closetTags[0];
-            filterImgs = this.state.closetFilterImgs;
-        } else {
-            tags = this.props.lookbookTags;
-            currFilter = this.props.lookbookTags[0];
-            filterImgs = this.props.lookbookFilterImgs;
-        }
-        this.setState({
-            activeTab: tab,
-            tags: tags,
-            currFilter: currFilter,
-            filterImgs: filterImgs,
-        });
-    }
-
-    handleFilterSwitch(filter) {
-        this.setState({
-            currFilter: filter,
-        });
-    }
 
     render() {
         return (
             <div className="App">
-                <Header
-                    activeTab={this.state.activeTab}
-                    handleTabSwitch={this.handleTabSwitch}
+                <Main 
                     tabs={this.props.tabs}
+                    closetTags={this.state.closetTags}
+                    closetItems={this.state.closetItems}
+                    lookbookTags={this.state.lookbookTags}
+                    lookbookItems={this.state.lookbookItems}
                 />
-                <FilterRow
-                    tagList={this.state.tags}
-                    filterImgs={this.state.filterImgs}
-                    activeFilter={this.state.currFilter}
-                    handleFilterSwitch={this.handleFilterSwitch}
-                />
-                <TileWrapper />
             </div>
         );
     }

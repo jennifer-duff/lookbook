@@ -13,6 +13,7 @@ class FilterRow extends Component {
     }
 
     render() {
+        console.log(this.props.tagList);
         return (
             <div className="FilterRow">
                 {this.props.tagList.map((tag) => (
