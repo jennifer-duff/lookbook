@@ -3,12 +3,13 @@ import "./FilterRow.css";
 import FilterBtn from "../FilterBtn/FilterBtn";
 
 class FilterRow extends Component {
-    // constructor(props) {
-    //     super(props);
-    // }
+    constructor(props) {
+        super(props);
+        this.changeFilter = this.changeFilter.bind(this);
+    }
 
-    handleClick(evt) {
-        console.log(`Clicked on ${evt.target.className}!`);
+    changeFilter(filter) {
+        this.props.handleFilterSwitch(filter);
     }
 
     render() {
@@ -25,6 +26,7 @@ class FilterRow extends Component {
                                 ? "FilterBtn FilterBtn-Active"
                                 : "FilterBtn"
                         }
+                        changeFilter={this.changeFilter}
                     />
                 ))}
             </div>

@@ -16,6 +16,7 @@ class App extends Component {
             "Accessories",
             "Edit Filters",
         ],
+        closetFilterImgs: [],
         lookbookTags: [
             "All",
             "Work",
@@ -24,41 +25,48 @@ class App extends Component {
             "Special Occasion",
             "Edit Filters",
         ],
+        lookbookFilterImgs: [],
     };
 
     constructor(props) {
         super(props);
         this.state = {
-            activeTab: this.props.tabs[0],
-            closetTags: [
-                "All",
-                "Tops",
-                "Bottoms",
-                "Outerwear",
-                "Shoes",
-                "Bags",
-                "Accessories",
-                "Edit Filters",
-            ],
-            closetFilter: "All",
-            closetFilterImgs: [],
-            lookbookTags: [
-                "All",
-                "Work",
-                "Everyday",
-                "Outdoors",
-                "Special Occasion",
-                "Edit Filters",
-            ],
-            lookbookFilter: "All",
-            lookbookFilterImgs: [],
+            closetTags: this.props.closetTags,
+            closetFilterImgs: this.props.closetFilterImgs,
+            lookbookTags: this.props.lookbookTags,
+            lookbookFilterImgs: this.props.lookbookFilterImgs,
+
+            activeTab: "Closet",
+            tags: this.props.closetTags,
+            currFilter: "All",
+            filterImgs: [],
         };
         this.handleTabSwitch = this.handleTabSwitch.bind(this);
+        this.handleFilterSwitch = this.handleFilterSwitch.bind(this);
     }
 
     handleTabSwitch(tab) {
+        let tags, currFilter, filterImgs;
+        if (tab === "Closet") {
+            tags = this.state.closetTags;
+            currFilter = this.state.closetTags[0];
+            filterImgs = this.state.closetFilterImgs;
+        } else {
+            tags = this.props.lookbookTags;
+            currFilter = this.props.lookbookTags[0];
+            filterImgs = this.props.lookbookFilterImgs;
+        }
         this.setState({
             activeTab: tab,
+            tags: tags,
+            currFilter: currFilter,
+            filterImgs: filterImgs,
+        });
+    }
+
+    handleFilterSwitch(filter) {
+        this.setState({
+            currFilter: filter,
         });
     }
 
@@ -70,20 +78,12 @@ class App extends Component {
                     handleTabSwitch={this.handleTabSwitch}
                     tabs={this.props.tabs}
                 />
-                {this.state.activeTab === this.props.tabs[0] && (
-                    <FilterRow
-                        tagList={this.state.closetTags}
-                        filterImgs={this.state.closetFilterImgs}
-                        activeFilter={this.state.closetFilter}
-                    />
-                )}
-                {this.state.activeTab === this.props.tabs[1] && (
-                    <FilterRow
-                        tagList={this.state.lookbookTags}
-                        filterImgs={this.state.lookbookFilterImgs}
-                        activeFilter={this.state.lookbookFilter}
-                    />
-                )}
+                <FilterRow
+                    tagList={this.state.tags}
+                    filterImgs={this.state.filterImgs}
+                    activeFilter={this.state.currFilter}
+                    handleFilterSwitch={this.handleFilterSwitch}
+                />
             </div>
         );
     }

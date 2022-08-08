@@ -2,17 +2,19 @@ import React, { Component } from "react";
 import "./FilterBtn.css";
 
 class FilterBtn extends Component {
-    // constructor(props) {
-    //     super(props);
-    // }
+    constructor(props) {
+        super(props);
+        this.handleClick = this.handleClick.bind(this);
+    }
 
     handleClick(evt) {
-        console.log(`Clicked on ${evt.target.className}!`);
+        console.log(`Clicked on ${this.props.tag}!`);
+        this.props.changeFilter(this.props.tag);
     }
 
     render() {
         return (
-            <div className={this.props.btnClass}>
+            <div className={this.props.btnClass} onClick={this.handleClick}>
                 <div className="FilterBtn-Circle">
                     {this.props.imgSrc !== "" && (
                         <img
