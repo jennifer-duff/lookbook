@@ -10,14 +10,15 @@ class TileWrapper extends Component {
     render() {
         return (
             <div className="TileWrapper">
-                {/* {this.props.currItems.map((item) => (
+                {this.props.currItems.length !== 0 &&
+                this.props.currItems.map((item) => (
                     <Tile
                         itemObject={item}
                         key={item.name}
                         altText={item.name}
                         imgSrc={item.imgSrc}
                     />
-                ))} */}
+                ))}
                 <Tile />
                 <Tile />
                 <Tile />
