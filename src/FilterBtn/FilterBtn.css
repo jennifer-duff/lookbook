@@ -1,0 +1,42 @@
+.FilterBtn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.FilterBtn:last-of-type {
+    margin-right: 0px;
+}
+
+.FilterBtn-Circle {
+    border-radius: 50%;
+    background-color: var(--med-gray);
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10pt;
+}
+
+.FilterBtn-Img {
+    width: 50px;
+    height: 50px;
+    margin: 0;
+}
+
+.FilterBtn-Label {
+    font-weight: 500;
+    font-size: 11pt;
+    text-transform: uppercase;
+}
+
+.FilterBtn-Active .FilterBtn-Label {
+    font-weight: 900;
+}
+
+.FilterBtn:hover .FilterBtn-Label {
+    font-weight: 900;
+}

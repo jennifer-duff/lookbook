@@ -1,9 +1,10 @@
-.Header-Navbar {
+.Header {
+    width: 100%;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-between;
-    padding: 10px 20px;
+    margin-bottom: 20px;
 }
 
 .Header-NavLinks-Wrapper {
@@ -18,7 +19,7 @@
     font-weight: 700;
     margin: 0;
     padding: 0px 5px;
-    color: darkgray;
+    color: var(--dark-gray);
     background: none;
     border: none;
 }
@@ -38,7 +39,7 @@
 
 .Header-Menu-Btn {
     background-color: white;
-    background-image: url("../assets/menu-icon.svg");
+    background-image: url("../_assets/menu-icon.svg");
     background-position: center;
     background-repeat: no-repeat;
     border: none;

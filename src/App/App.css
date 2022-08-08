@@ -1,3 +1,11 @@
-.App-Header {
-    width: 100%;
+.App {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    padding: 15px;
+}
+
+.Test-Img {
+    width: 50px;
+    height: 50px;
 }

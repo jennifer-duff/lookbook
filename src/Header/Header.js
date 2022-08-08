@@ -27,7 +27,7 @@ class Header extends Component {
 
     render() {
         return (
-            <nav className="Header-Navbar">
+            <nav className="Header">
                 <div className="Header-NavLinks-Wrapper">
                     {this.props.tabs.map((tab) => (
                         <button
