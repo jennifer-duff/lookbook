@@ -1,0 +1,47 @@
+.Header-Navbar {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    padding: 10px 20px;
+}
+
+.Header-NavLinks-Wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+.Header-NavLink {
+    font-size: 30pt;
+    font-weight: 700;
+    margin: 0;
+    padding: 0px 5px;
+    color: darkgray;
+    background: none;
+    border: none;
+}
+
+.Header-NavLink:hover {
+    text-decoration: underline 5px solid black;
+}
+
+.Header-NavLink:nth-of-type(1) {
+    margin-right: 25px;
+}
+
+.Header-NavLink-Active {
+    color: black;
+    text-decoration: underline 5px solid black;
+}
+
+.Header-Menu-Btn {
+    background-color: white;
+    background-image: url("../assets/menu-icon.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    border: none;
+    padding: 10px;
+    width: 40px;
+}
