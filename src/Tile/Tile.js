@@ -7,10 +7,14 @@ class Tile extends Component {
         this.handleClick = this.handleClick.bind(this);
     }
 
-    handleClick(evt) {
-        console.log("TILE CLICKED!");
+    handleClick(evt){
+        console.log(`${evt.target} was clicked!`);
     }
 
+    handleDrag(evt){
+        console.log(`${evt.target} was dragged!`);
+    }
+    
     render() {
         return (
             <div className="Tile">
