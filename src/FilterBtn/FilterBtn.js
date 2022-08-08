@@ -8,7 +8,6 @@ class FilterBtn extends Component {
     }
 
     handleClick(evt) {
-        console.log(`Clicked on ${this.props.tag}!`);
         this.props.changeFilter(this.props.tag);
     }
 

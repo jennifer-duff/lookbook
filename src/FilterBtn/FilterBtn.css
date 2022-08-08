@@ -35,6 +35,7 @@
 
 .FilterBtn-Active .FilterBtn-Label {
     font-weight: 900;
+    letter-spacing: -0.5px;
 }
 
 /* .FilterBtn:hover .FilterBtn-Label {
