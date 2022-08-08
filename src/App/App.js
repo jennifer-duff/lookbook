@@ -13,7 +13,6 @@ class App extends Component {
             "Shoes",
             "Bags",
             "Accessories",
-            "Edit Filters",
         ], 
         lookbookTags: [
             "All",
@@ -21,7 +20,6 @@ class App extends Component {
             "Everyday",
             "Outdoors",
             "Special Occasion",
-            "Edit Filters",
         ],
     };
 
@@ -39,16 +37,31 @@ class App extends Component {
         //temporary array until DB is set up
         let dbClosetItems = [];
 
-        //current closet items
-        let currClosetItems = [];
+        //list of closet item lists
+        let closet = {};
+
+        // basic "all" filter list
+        let allClosetItems = [];
 
         // go thru DB and add each closet item to the App's list of items
         dbClosetItems.forEach(item => {
             let closetItem = new ClosetItem(item.name, item.imgSrc, item.tags, item.season, item.notes, item.brand, item.size, item.price);
-            currClosetItems.push(closetItem);
+            allClosetItems.push(closetItem);
         })
 
-        return currClosetItems;
+        closet.All = allClosetItems;
+
+        this.props.closetTags.forEach(tag => {
+            let itemList = [];
+            allClosetItems.forEach(item => {
+                if(item.tags.includes(tag)){
+                    itemList.push(item);
+                }
+            })
+            closet[tag]= itemList;
+        })
+
+        return closet;
     }
 
     initializeLookbookItems(){

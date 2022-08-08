@@ -1,19 +1,24 @@
 import React, { Component } from "react";
 import "./FilterRow.css";
 import FilterBtn from "../FilterBtn/FilterBtn";
+// import editIcon from "../_assets/edit-icon.svg"
 
 class FilterRow extends Component {
     constructor(props) {
         super(props);
         this.changeFilter = this.changeFilter.bind(this);
+        this.editFilters = this.editFilters.bind(this);
     }
 
     changeFilter(filter) {
         this.props.handleFilterSwitch(filter);
     }
 
+    editFilters(){
+        console.log("We editing filters!");
+    }
+
     render() {
-        console.log(this.props.tagList);
         return (
             <div className="FilterRow">
                 {this.props.tagList.map((tag) => (
@@ -30,6 +35,14 @@ class FilterRow extends Component {
                         changeFilter={this.changeFilter}
                     />
                 ))}
+                <FilterBtn 
+                    // imgSrc={editIcon}
+                    imgSrc=""
+                    altText="Edit Filters"
+                    key="Edit Filters"
+                    btnClass="FilterBtn"
+                    OnClick={this.editFilter}
+                />
             </div>
         );
     }
