@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import Header from "../Header/Header.js";
 import FilterRow from "../FilterRow/FilterRow";
+import TileWrapper from "../TileWrapper/TileWrapper";
 
 class App extends Component {
     static defaultProps = {
@@ -84,6 +85,7 @@ class App extends Component {
                     activeFilter={this.state.currFilter}
                     handleFilterSwitch={this.handleFilterSwitch}
                 />
+                <TileWrapper />
             </div>
         );
     }

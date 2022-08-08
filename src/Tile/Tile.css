@@ -1,0 +1,9 @@
+.Tile{
+    aspect-ratio: 1/1;
+    width: 1fr;
+    border: 1px solid var(--med-gray);
+    margin: -1px -1px 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
