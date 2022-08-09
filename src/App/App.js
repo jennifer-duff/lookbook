@@ -26,11 +26,24 @@ class App extends Component {
 
     constructor(props) {
         super(props);
+        let closetItems = this.initializeClosetItems();
+        let lookbookItems = this.initializeLookbookItems();
+        let closetFilterImgs = this.initializeFilterImgs(
+            this.props.closetTags,
+            closetItems
+        );
+        let lookbookFilterImgs = this.initializeFilterImgs(
+            this.props.lookbookTags,
+            lookbookItems
+        );
+
         this.state = {
             closetTags: this.props.closetTags,
-            closetItems: this.initializeClosetItems(),
+            closetItems: closetItems,
+            closetFilterImgs: closetFilterImgs,
             lookbookTags: this.props.lookbookTags,
-            lookbookItems: this.initializeLookbookItems(),
+            lookbookItems: lookbookItems,
+            lookbookFilterImgs: lookbookFilterImgs,
         };
     }
 
@@ -77,22 +90,55 @@ class App extends Component {
         //temporary array until DB is set up
         let dbLookbookItems = [];
 
-        //current lookbook items
-        let currLookbookItems = [];
+        //total list of Lookbook items by category
+        let Lookbook = {};
 
-        // go thru DB and add each lookbook item to the App's list of items
-        dbLookbookItems.forEach((item) => {
-            let lookbookItem = new LookItem(
-                item.name,
-                item.imgSrc,
-                item.tags,
-                item.season,
-                item.notes
-            );
-            currLookbookItems.push(lookbookItem);
-        });
+        // basic "all" filter list
+        let allLookbookItems = [];
 
-        return currLookbookItems;
+        // go thru DB and add each Lookbook item to the App's list of items
+        if (dbLookbookItems.length !== 0) {
+            dbLookbookItems.forEach((item) => {
+                let LookItem = new LookItem(
+                    item.name,
+                    item.imgSrc,
+                    item.tags,
+                    item.season,
+                    item.notes
+                );
+                allLookbookItems.push(LookItem);
+            });
+
+            this.props.LookbookTags.forEach((tag) => {
+                let itemList = [];
+                allLookbookItems.forEach((item) => {
+                    if (item.tags.includes(tag)) {
+                        itemList.push(item);
+                    }
+                });
+                Lookbook[tag] = itemList;
+            });
+
+            Lookbook["All"] = allLookbookItems;
+        }
+        return Lookbook;
+    }
+
+    initializeFilterImgs(tags, items) {
+        let filterImgs = {};
+
+        if (Object.keys(items).length === 0) {
+            tags.forEach((tag) => {
+                let img = "";
+                filterImgs[tag] = img;
+            });
+        } else {
+            tags.forEach((tag) => {
+                let img = items[tag][0].imgSrc;
+                filterImgs[tag] = img;
+            });
+        }
+        return filterImgs;
     }
 
     render() {
@@ -102,8 +148,10 @@ class App extends Component {
                     tabs={this.props.tabs}
                     closetTags={this.state.closetTags}
                     closetItems={this.state.closetItems}
+                    closetFilterImgs={this.state.closetFilterImgs}
                     lookbookTags={this.state.lookbookTags}
                     lookbookItems={this.state.lookbookItems}
+                    lookbookFilterImgs={this.state.lookbookFilterImgs}
                 />
             </div>
         );

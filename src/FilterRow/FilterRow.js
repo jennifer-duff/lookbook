@@ -23,7 +23,7 @@ class FilterRow extends Component {
             <div className="FilterRow">
                 {this.props.tagList.map((tag) => (
                     <FilterBtn
-                        imgSrc=""
+                        imgSrc={this.props.currFilterImgs[tag]}
                         altText={`Filter by ${tag}`}
                         tag={tag}
                         key={tag}

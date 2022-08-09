@@ -10,6 +10,7 @@ class Main extends Component {
         this.state = {
             activeTab: this.props.tabs[0],
             activeFilter: this.props.closetTags[0],
+            currFilterImgs: this.props.closetFilterImgs,
             currTags: this.props.closetTags,
             allItems: this.props.closetItems,
             currItems: this.props.closetItems["All"],
@@ -19,17 +20,19 @@ class Main extends Component {
     }
 
     handleTabSwitch(tab) {
-        let currTags, activeFilter, currItems, allItems;
+        let currTags, activeFilter, currItems, allItems, currFilterImgs;
         if (tab === "Closet") {
             currTags = this.props.closetTags;
             activeFilter = this.props.closetTags[0];
             currItems = this.props.closetItems["All"];
             allItems = this.props.closetItems;
+            currFilterImgs = this.props.closetFilterImgs;
         } else {
             currTags = this.props.lookbookTags;
             activeFilter = this.props.lookbookTags[0];
             currItems = this.props.lookbookItems["All"];
             allItems = this.props.lookbookItems;
+            currFilterImgs = this.props.lookbookFilterImgs;
         }
         this.setState({
             activeTab: tab,
@@ -37,18 +40,23 @@ class Main extends Component {
             currTags: currTags,
             currItems: currItems,
             allItems: allItems,
+            currFilterImgs: currFilterImgs,
         });
     }
 
     handleFilterSwitch(filter) {
+        let currFilterImgs =
+            this.state.activeTab === "Closet"
+                ? this.props.closetFilterImgs
+                : this.props.lookbookFilterImgs;
         this.setState({
             activeFilter: filter,
             currItems: this.state.allItems[filter],
+            currFilterImgs: currFilterImgs,
         });
     }
 
     render() {
-        console.log(this.state.currItems);
         return (
             <div className="Main">
                 <Header
@@ -60,6 +68,7 @@ class Main extends Component {
                     tagList={this.state.currTags}
                     currItems={this.state.currItems}
                     activeFilter={this.state.activeFilter}
+                    currFilterImgs={this.state.currFilterImgs}
                     handleFilterSwitch={this.handleFilterSwitch}
                 />
                 <TileWrapper currItems={this.state.currItems} />
