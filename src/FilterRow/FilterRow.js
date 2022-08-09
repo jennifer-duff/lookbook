@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./FilterRow.css";
 import FilterBtn from "../FilterBtn/FilterBtn";
-// import editIcon from "../_assets/edit-icon.svg"
+import editIcon from "../_assets/editIcon.svg";
 
 class FilterRow extends Component {
     constructor(props) {
@@ -14,7 +14,7 @@ class FilterRow extends Component {
         this.props.handleFilterSwitch(filter);
     }
 
-    editFilters(){
+    editFilters() {
         console.log("We editing filters!");
     }
 
@@ -35,9 +35,8 @@ class FilterRow extends Component {
                         changeFilter={this.changeFilter}
                     />
                 ))}
-                <FilterBtn 
-                    // imgSrc={editIcon}
-                    imgSrc=""
+                <FilterBtn
+                    imgSrc={editIcon}
                     altText="Edit Filters"
                     tag="Edit Filters"
                     key="Edit Filters"

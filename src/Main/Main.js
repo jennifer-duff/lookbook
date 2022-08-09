@@ -5,7 +5,6 @@ import FilterRow from "../FilterRow/FilterRow";
 import TileWrapper from "../TileWrapper/TileWrapper";
 
 class Main extends Component {
-
     constructor(props) {
         super(props);
         this.state = {
@@ -34,14 +33,14 @@ class Main extends Component {
             activeTab: tab,
             activeFilter: activeFilter,
             currTags: tags,
-            currItems: items
+            currItems: items,
         });
     }
 
     handleFilterSwitch(filter) {
         this.setState({
             activeFilter: filter,
-            currItems: this.props.allItems[filter]
+            currItems: this.state.allItems[filter],
         });
     }
 
@@ -58,9 +57,7 @@ class Main extends Component {
                     activeFilter={this.state.activeFilter}
                     handleFilterSwitch={this.handleFilterSwitch}
                 />
-                <TileWrapper 
-                    currItems={this.state.currItems}
-                />
+                <TileWrapper currItems={this.state.currItems} />
             </div>
         );
     }
