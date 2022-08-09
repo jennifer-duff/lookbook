@@ -1,4 +1,4 @@
-.Tile{
+.Tile {
     aspect-ratio: 1/1;
     width: 1fr;
     border: 1px solid var(--med-gray);
@@ -6,4 +6,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 10px;
+}
+
+.Tile-Img {
+    max-width: 100%;
+    max-height: 100%;
 }

@@ -8,10 +8,18 @@ class TileWrapper extends Component {
     // }
 
     render() {
+        // if the current tab has no Items, the app will break
+        // so return now before venturing further into the abyss
+        if (
+            !Array.isArray(this.props.currItems) ||
+            !this.props.currItems.length
+        ) {
+            return <div className="TileWrapper"></div>;
+        }
+
         return (
             <div className="TileWrapper">
-                {this.props.currItems.length !== 0 &&
-                this.props.currItems.map((item) => (
+                {this.props.currItems.map((item) => (
                     <Tile
                         itemObject={item}
                         key={item.name}
@@ -19,26 +27,6 @@ class TileWrapper extends Component {
                         imgSrc={item.imgSrc}
                     />
                 ))}
-                <Tile />
-                <Tile />
-                <Tile />
-                <Tile />
-                <Tile />
-                <Tile />
-                <Tile />
-                <Tile />
-                <Tile />
-                <Tile />
-                <Tile />
-                <Tile />
-                <Tile />
-                <Tile />
-                <Tile />
-                <Tile />
-                <Tile />
-                <Tile />
-                <Tile />
-                <Tile />
             </div>
         );
     }

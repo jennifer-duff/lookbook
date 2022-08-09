@@ -19,21 +19,24 @@ class Main extends Component {
     }
 
     handleTabSwitch(tab) {
-        let tags, activeFilter, items;
+        let currTags, activeFilter, currItems, allItems;
         if (tab === "Closet") {
-            tags = this.props.closetTags;
+            currTags = this.props.closetTags;
             activeFilter = this.props.closetTags[0];
-            items = this.props.closetItems;
+            currItems = this.props.closetItems["All"];
+            allItems = this.props.closetItems;
         } else {
-            tags = this.props.lookbookTags;
+            currTags = this.props.lookbookTags;
             activeFilter = this.props.lookbookTags[0];
-            items = this.props.lookbookItems;
+            currItems = this.props.lookbookItems["All"];
+            allItems = this.props.lookbookItems;
         }
         this.setState({
             activeTab: tab,
             activeFilter: activeFilter,
-            currTags: tags,
-            currItems: items,
+            currTags: currTags,
+            currItems: currItems,
+            allItems: allItems,
         });
     }
 
@@ -45,6 +48,7 @@ class Main extends Component {
     }
 
     render() {
+        console.log(this.state.currItems);
         return (
             <div className="Main">
                 <Header
@@ -54,6 +58,7 @@ class Main extends Component {
                 />
                 <FilterRow
                     tagList={this.state.currTags}
+                    currItems={this.state.currItems}
                     activeFilter={this.state.activeFilter}
                     handleFilterSwitch={this.handleFilterSwitch}
                 />
