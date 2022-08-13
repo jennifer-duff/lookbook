@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import Main from "../Main/Main";
-import { ClosetItem, LookItem } from "../Item";
+import { ClosetItem, LookbookItem } from "../Item";
 import ClosetSeeds from "../seeds";
+// import mongoose from "mongoose";
+// import connectToDB from "../dbConnect";
 
 class App extends Component {
     static defaultProps = {
@@ -99,7 +101,7 @@ class App extends Component {
         // go thru DB and add each Lookbook item to the App's list of items
         if (dbLookbookItems.length !== 0) {
             dbLookbookItems.forEach((item) => {
-                let LookItem = new LookItem(
+                let LookItem = new LookbookItem(
                     item.name,
                     item.imgSrc,
                     item.tags,

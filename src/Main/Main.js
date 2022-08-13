@@ -3,8 +3,13 @@ import "./Main.css";
 import Header from "../Header/Header.js";
 import FilterRow from "../FilterRow/FilterRow";
 import TileWrapper from "../TileWrapper/TileWrapper";
+import ItemDetails from "../ItemDetails/ItemDetails";
 
 class Main extends Component {
+    static defaultProps = {
+        Views: ["AllItems", "ItemDetails", "EditItem"],
+    };
+
     constructor(props) {
         super(props);
         this.state = {
@@ -13,10 +18,14 @@ class Main extends Component {
             currFilterImgs: this.props.closetFilterImgs,
             currTags: this.props.closetTags,
             allItems: this.props.closetItems,
-            currItems: this.props.closetItems["All"],
+            currItemList: this.props.closetItems["All"],
+            currView: "AllItems",
+            currItem: null,
         };
         this.handleTabSwitch = this.handleTabSwitch.bind(this);
         this.handleFilterSwitch = this.handleFilterSwitch.bind(this);
+        this.handleTileClick = this.handleTileClick.bind(this);
+        this.handleBackClick = this.hanldeBackClick.bind(this);
     }
 
     handleTabSwitch(tab) {
@@ -56,22 +65,72 @@ class Main extends Component {
         });
     }
 
+    handleTileClick(tileItem) {
+        this.setState({
+            currView: "ItemDetails",
+            currItem: tileItem,
+        });
+    }
+
+    hanldeBackClick() {
+        this.setState({
+            currView: "AllItems",
+            currItem: null,
+        });
+    }
+
     render() {
+        let Body;
+        switch (this.state.currView) {
+            case "AllItems":
+                Body = (
+                    <div className="Main-Body">
+                        <FilterRow
+                            tagList={this.state.currTags}
+                            currItems={this.state.currItemList}
+                            activeFilter={this.state.activeFilter}
+                            currFilterImgs={this.state.currFilterImgs}
+                            handleFilterSwitch={this.handleFilterSwitch}
+                        />
+                        <TileWrapper
+                            currItems={this.state.currItemList}
+                            tileClickHandler={this.handleTileClick}
+                        />
+                    </div>
+                );
+                break;
+            case "ItemDetails":
+                Body = (
+                    <div className="Main-Body">
+                        <ItemDetails item={this.state.currItem} />
+                    </div>
+                );
+                break;
+            default:
+                Body = <div className="Main-Body"> Something went wrong!</div>;
+        }
+
         return (
             <div className="Main">
                 <Header
+                    currView={this.state.currView}
                     tabs={this.props.tabs}
                     activeTab={this.state.activeTab}
                     handleTabSwitch={this.handleTabSwitch}
+                    handleBackClick={this.handleBackClick}
                 />
-                <FilterRow
+                {Body}
+                {/* <FilterRow
                     tagList={this.state.currTags}
                     currItems={this.state.currItems}
                     activeFilter={this.state.activeFilter}
                     currFilterImgs={this.state.currFilterImgs}
                     handleFilterSwitch={this.handleFilterSwitch}
                 />
-                <TileWrapper currItems={this.state.currItems} />
+                <TileWrapper
+                    currItems={this.state.currItems}
+                    tileClickHandler={this.handleTileClick}
+                /> */}
             </div>
         );
     }

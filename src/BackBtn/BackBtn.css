@@ -1,0 +1,12 @@
+.BackBtn {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0px 10px 0 0;
+    height: auto;
+    cursor: pointer;
+}
+
+.BackBtn-Img {
+    height: 30px;
+}

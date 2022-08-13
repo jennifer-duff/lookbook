@@ -3,9 +3,14 @@ import Tile from "../Tile/Tile";
 import "./TileWrapper.css";
 
 class TileWrapper extends Component {
-    // constructor(props) {
-    //     super(props);
-    // }
+    constructor(props) {
+        super(props);
+        this.passTileClick = this.passTileClick.bind(this);
+    }
+
+    passTileClick(item) {
+        this.props.tileClickHandler(item);
+    }
 
     render() {
         // if the current tab has no Items, the app will break
@@ -25,6 +30,7 @@ class TileWrapper extends Component {
                         key={item.name}
                         altText={item.name}
                         imgSrc={item.imgSrc}
+                        clickHandler={this.passTileClick}
                     />
                 ))}
             </div>

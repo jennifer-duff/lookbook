@@ -21,6 +21,8 @@
     color: var(--dark-gray);
     background: none;
     border: none;
+    height: auto;
+    cursor: pointer;
 }
 
 .Header-NavLink:hover {
@@ -34,6 +36,10 @@
 .Header-NavLink-Active {
     color: black;
     text-decoration: underline 5px solid black;
+}
+
+.Header-PageTitle {
+    cursor: default;
 }
 
 .Header-Menu-Btn {

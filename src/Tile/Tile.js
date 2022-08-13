@@ -8,7 +8,8 @@ class Tile extends Component {
     }
 
     handleClick(evt) {
-        console.log(`${evt.target} was clicked!`);
+        console.log(`${this.props.itemObject.name} was clicked!`);
+        this.props.clickHandler(this.props.itemObject);
     }
 
     handleDrag(evt) {
@@ -17,7 +18,7 @@ class Tile extends Component {
 
     render() {
         return (
-            <div className="Tile">
+            <div className="Tile" onClick={this.handleClick}>
                 <img
                     className="Tile-Img"
                     src={this.props.imgSrc}
