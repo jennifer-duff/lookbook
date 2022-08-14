@@ -1,11 +1,17 @@
 {
-    "short_name": "Lookbook",
     "name": "The Lookbook",
-    "start_url": ".",
+    "short_name": "The Lookbook",
+    "theme_color": "#000000",
+    "background_color": "#ffffff",
     "display": "standalone",
-    "icons": {
-        "src": "favicon.png",
-        "sizes": "64x64 32x32 24x24 16x16",
-        "type": "image/x-icon"
-    }
+    "scope": "/",
+    "start_url": ".",
+    "description": "A sartorial organizer",
+    "orientation": "any",
+    "icons": [
+        {
+            "src": "./favicon.png",
+            "sizes": "64x64 32x32 24x24 16x16 1024x1024"
+        }
+    ]
 }
