@@ -16,15 +16,15 @@ class TileWrapper extends Component {
         // if the current tab has no Items, the app will break
         // so return now before venturing further into the abyss
         if (
-            !Array.isArray(this.props.currItems) ||
-            !this.props.currItems.length
+            !Array.isArray(this.props.currItemList) ||
+            !this.props.currItemList.length
         ) {
             return <div className="TileWrapper"></div>;
         }
 
         return (
             <div className="TileWrapper">
-                {this.props.currItems.map((item) => (
+                {this.props.currItemList.map((item) => (
                     <Tile
                         itemObject={item}
                         key={item.name}

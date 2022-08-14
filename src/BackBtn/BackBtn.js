@@ -9,7 +9,6 @@ class BackBtn extends Component {
     }
 
     handleBtnClick() {
-        console.log("Clicked the button!");
         this.props.clickHandler();
     }
 

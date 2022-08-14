@@ -1,0 +1,13 @@
+.AddBtn {
+    border-radius: 50%;
+    width: 90px;
+    height: 90px;
+    border: 0.25px solid var(--med-gray);
+    padding: 25px;
+    position: fixed;
+    top: calc(100vh - (25px + 90px));
+    left: 25px;
+    z-index: 10;
+    background-color: var(--light-gray);
+    box-shadow: var(--box-shadow);
+}

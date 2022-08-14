@@ -1,6 +1,11 @@
 {
     "short_name": "Lookbook",
-    "name": "L O O K B O O K",
+    "name": "The Lookbook",
     "start_url": ".",
-    "display": "standalone"
+    "display": "standalone",
+    "icons": {
+        "src": "favicon.png",
+        "sizes": "64x64 32x32 24x24 16x16",
+        "type": "image/x-icon"
+    }
 }

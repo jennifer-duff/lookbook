@@ -4,10 +4,11 @@ import Header from "../Header/Header.js";
 import FilterRow from "../FilterRow/FilterRow";
 import TileWrapper from "../TileWrapper/TileWrapper";
 import ItemDetails from "../ItemDetails/ItemDetails";
+import AddBtn from "../AddBtn/AddBtn";
 
 class Main extends Component {
     static defaultProps = {
-        Views: ["AllItems", "ItemDetails", "EditItem"],
+        Views: ["AllItems", "ItemDetails", "AddItem", "EditItem"],
     };
 
     constructor(props) {
@@ -25,21 +26,22 @@ class Main extends Component {
         this.handleTabSwitch = this.handleTabSwitch.bind(this);
         this.handleFilterSwitch = this.handleFilterSwitch.bind(this);
         this.handleTileClick = this.handleTileClick.bind(this);
-        this.handleBackClick = this.hanldeBackClick.bind(this);
+        this.handleBackClick = this.handleBackClick.bind(this);
+        this.addItem = this.addItem.bind(this);
     }
 
     handleTabSwitch(tab) {
-        let currTags, activeFilter, currItems, allItems, currFilterImgs;
+        let currTags, activeFilter, currItemList, allItems, currFilterImgs;
         if (tab === "Closet") {
             currTags = this.props.closetTags;
             activeFilter = this.props.closetTags[0];
-            currItems = this.props.closetItems["All"];
+            currItemList = this.props.closetItems["All"];
             allItems = this.props.closetItems;
             currFilterImgs = this.props.closetFilterImgs;
         } else {
             currTags = this.props.lookbookTags;
             activeFilter = this.props.lookbookTags[0];
-            currItems = this.props.lookbookItems["All"];
+            currItemList = this.props.lookbookItems["All"];
             allItems = this.props.lookbookItems;
             currFilterImgs = this.props.lookbookFilterImgs;
         }
@@ -47,7 +49,7 @@ class Main extends Component {
             activeTab: tab,
             activeFilter: activeFilter,
             currTags: currTags,
-            currItems: currItems,
+            currItemList: currItemList,
             allItems: allItems,
             currFilterImgs: currFilterImgs,
         });
@@ -60,7 +62,7 @@ class Main extends Component {
                 : this.props.lookbookFilterImgs;
         this.setState({
             activeFilter: filter,
-            currItems: this.state.allItems[filter],
+            currItemList: this.state.allItems[filter],
             currFilterImgs: currFilterImgs,
         });
     }
@@ -72,14 +74,21 @@ class Main extends Component {
         });
     }
 
-    hanldeBackClick() {
+    handleBackClick() {
         this.setState({
             currView: "AllItems",
             currItem: null,
         });
     }
 
-    render() {
+    addItem() {
+        this.setState({
+            currView: "AddItem",
+            currItem: null,
+        });
+    }
+
+    renderBody() {
         let Body;
         switch (this.state.currView) {
             case "AllItems":
@@ -87,14 +96,17 @@ class Main extends Component {
                     <div className="Main-Body">
                         <FilterRow
                             tagList={this.state.currTags}
-                            currItems={this.state.currItemList}
                             activeFilter={this.state.activeFilter}
                             currFilterImgs={this.state.currFilterImgs}
                             handleFilterSwitch={this.handleFilterSwitch}
                         />
                         <TileWrapper
-                            currItems={this.state.currItemList}
+                            currItemList={this.state.currItemList}
                             tileClickHandler={this.handleTileClick}
+                        />
+                        <AddBtn
+                            activeTab={this.props.activeTab}
+                            clickHandler={this.addItem}
                         />
                     </div>
                 );
@@ -109,7 +121,10 @@ class Main extends Component {
             default:
                 Body = <div className="Main-Body"> Something went wrong!</div>;
         }
+        return Body;
+    }
 
+    render() {
         return (
             <div className="Main">
                 <Header
@@ -119,18 +134,7 @@ class Main extends Component {
                     handleTabSwitch={this.handleTabSwitch}
                     handleBackClick={this.handleBackClick}
                 />
-                {Body}
-                {/* <FilterRow
-                    tagList={this.state.currTags}
-                    currItems={this.state.currItems}
-                    activeFilter={this.state.activeFilter}
-                    currFilterImgs={this.state.currFilterImgs}
-                    handleFilterSwitch={this.handleFilterSwitch}
-                />
-                <TileWrapper
-                    currItems={this.state.currItems}
-                    tileClickHandler={this.handleTileClick}
-                /> */}
+                {this.renderBody()}
             </div>
         );
     }
