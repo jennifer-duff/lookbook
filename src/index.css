@@ -1,6 +1,7 @@
 :root {
-    --med-gray: rgb(221, 220, 220);
+    --med-gray: rgb(220, 220, 220);
     --dark-gray: rgb(153, 153, 153);
+    --default-border: 1px solid var(--med-gray);
 }
 
 * {

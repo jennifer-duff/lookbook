@@ -57,7 +57,7 @@ class Header extends Component {
                     <div className="Header-NavLinks-Wrapper">
                         <BackBtn clickHandler={this.goBack} />
                         <button className="Header-NavLink Header-NavLink-Active Header-PageTitle">
-                            Closet
+                            Item Details
                         </button>
                     </div>
                 );
