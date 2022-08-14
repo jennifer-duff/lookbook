@@ -85,10 +85,19 @@ class Header extends Component {
                     ))}
                 </div>                    */}
                 {this.generateBtns(this.props.currView)}
-                <button
-                    className="Header-Menu-Btn"
-                    onClick={this.handleMenuClick}
-                ></button>
+                <div className="Header-Menu-Btns-Wrapper">
+                    {this.props.currView === "ItemDetails" && (
+                        <button className="Header-Edit-Btn"></button>
+                    )}
+                    {(this.props.currView === "AddItem" ||
+                        this.props.currView === "EditItem") && (
+                        <button className="Header-Save-Btn"></button>
+                    )}
+                    <button
+                        className="Header-Menu-Btn"
+                        onClick={this.handleMenuClick}
+                    ></button>
+                </div>
             </nav>
         );
     }

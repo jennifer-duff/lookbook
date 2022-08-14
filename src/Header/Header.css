@@ -43,12 +43,45 @@
     cursor: default;
 }
 
+.Header-Menu-Btns-Wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.Header-Edit-Btn {
+    background-color: white;
+    background-image: url("../_assets/editIcon.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    border: none;
+    padding: 10px;
+    height: 45px;
+    width: 40px;
+    margin: 0 20px 0 0;
+}
+
+.Header-Save-Btn {
+    background-color: white;
+    background-image: url("../_assets/Checkmark.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: none;
+    padding: 0px;
+    height: 40px;
+    width: 40px;
+    margin: 0 20px 0 0;
+}
+
 .Header-Menu-Btn {
     background-color: white;
     background-image: url("../_assets/menuIcon.svg");
     background-position: center;
     background-repeat: no-repeat;
     border: none;
-    padding: 10px;
+    padding: 0px;
+    height: 40px;
     width: 40px;
 }
