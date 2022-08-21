@@ -10,9 +10,9 @@ class App extends Component {
         tabs: ["Closet", "Lookbook"],
         closetTags: [
             "All",
+            "Outerwear",
             "Tops",
             "Bottoms",
-            "Outerwear",
             "Shoes",
             "Bags",
             "Accessories",
@@ -20,6 +20,7 @@ class App extends Component {
         lookbookTags: [
             "All",
             "Work",
+            "Travel",
             "Everyday",
             "Outdoors",
             "Special Occasion",

@@ -8,6 +8,6 @@
 
 .Main-Body {
     min-height: calc(100vh - 85px);
-    /*85px is height of header (45px) + marin-bottom of header(10px) + top & bottom Main padding (15px)*/
+    /*85px is height of header (45px) + margin-bottom of header(10px) + top & bottom Main padding (15px)*/
     height: 100%;
 }
